@@ -10,26 +10,30 @@ Tema de Shopify (Online Store 2.0) para PLURA: software digital con la identidad
 
 Los cambios hechos en el editor se sincronizan de vuelta al repo como commits.
 
-## Estructura
+## Portada
 
-- `layout/` – `theme.liquid` y `password.liquid`
-- `sections/` – portada (`hero`), familia de productos (píldoras de color), características, colección destacada, FAQ, llamado a la acción y las secciones principales (producto, colección, carrito, búsqueda, blog, página, 404, contraseña)
-- `snippets/` – isotipo (color, monocromo y con halo), tarjeta de producto, precio, iconos
-- `assets/` – `base.css`, `theme.js` (opcional: el tema funciona sin JS), fuentes Nunito e IBM Plex Mono (licencia OFL)
-- `templates/` – plantillas JSON
-- `locales/es.default.json` – textos en español
+Réplica del sitio de PLURA (Astro) como secciones editables:
 
-## Color de cada producto
+1. **Portada**: insignia, título en dos tonos, botones y panel de la app (datos, barras y línea editables; también puedes subir una captura real).
+2. **Franja de ventajas**: un solo login, en la nube, soporte cercano.
+3. **Módulos** (`#suite`): POS, CRM y Finanzas con lista de funciones; cada uno puede enlazar a un producto de Shopify.
+4. **Funciones** (`#funciones`): cuadrícula de 6 celdas.
+5. **Cómo funciona**: 3 pasos.
+6. **Precios** (`#precios`): planes con cambio mensual/anual; cada plan puede enlazar a un producto para comprarlo.
+7. **Testimonios**, **Preguntas frecuentes** (`#faq`) y **Formulario de contacto** (`#contacto`, llega al correo de la tienda).
 
-Las tarjetas y la página de producto toman el color de la familia en este orden:
+## Configuración del tema
 
-1. Metacampo `custom.color_plura` (`blue`, `amber`, `green`, `ink`, `magenta` o en español: `azul`, `ambar`, `verde`, `tinta`, `magenta`).
-2. Etiqueta del producto `color:azul`, `color:verde`, etc.
-3. El handle: contiene `pos` → azul, `crm` → ámbar, `finanzas` → verde, `suite` → tinta, `connect` → magenta.
+- **Modo de color**: claro, oscuro o automático (según el sistema del visitante). Colores editables para cada modo.
+- **Idioma**: el botón ES/EN aparece cuando publicas inglés en *Configuración → Idiomas*. Los textos del tema ya están en `locales/en.json`; el contenido de las secciones se traduce con la app *Translate & Adapt*.
+- **Fuentes**: Geist y Geist Mono (licencia OFL), incluidas en `assets/`.
+
+## Menús que debes crear (Contenido → Menús)
+
+- `main-menu`: Suite `/#suite`, Funciones `/#funciones`, Precios `/#precios`, FAQ `/#faq`, Blog `/blogs/news`
+- `footer-producto`, `footer-empresa` y `footer` (Legal)
 
 ## Pendiente
 
-- Textos entre corchetes (`[...]`) en la portada, FAQ y página de producto.
-- Elegir la colección de planes en la sección **Colección destacada**.
-- Crear los menús `main-menu` y `footer` en **Contenido → Menús**.
-- La tipografía original del logotipo (Typo Grotesk Rounded) es una versión demo sin licencia comercial; se reemplazó por Nunito. Si compras la licencia web, agrega el archivo en `assets/` y cambia `--font-display` en `snippets/css-variables.liquid`.
+- Textos entre corchetes (`[...]`): testimonios reales y respuestas de la FAQ.
+- Crear los productos (planes) en Shopify y vincularlos en las secciones Módulos y Precios.

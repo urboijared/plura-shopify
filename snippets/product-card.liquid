@@ -1,8 +1,7 @@
 {%- comment -%}
   Tarjeta de producto. Parámetro: product.
 {%- endcomment -%}
-{%- capture color -%}{% render 'product-color', product: product %}{%- endcapture -%}
-<article class="product-card product-card--{{ color }}">
+<article class="card product-card">
   <a class="product-card__link" href="{{ product.url }}">
     <div class="product-card__media">
       {%- if product.featured_media -%}
@@ -16,13 +15,7 @@
             alt: product.featured_media.alt
         }}
       {%- else -%}
-        <div class="product-card__placeholder">
-          {%- if color == 'amber' -%}
-            {% render 'isotipo', variant: 'mono', width: 96, class: 'isotipo--ink' %}
-          {%- else -%}
-            {% render 'isotipo', variant: 'mono', width: 96, class: 'isotipo--white' %}
-          {%- endif -%}
-        </div>
+        <div class="placeholder">{% render 'isotipo', width: 72 %}</div>
       {%- endif -%}
     </div>
     <div class="product-card__body">

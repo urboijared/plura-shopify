@@ -24,8 +24,8 @@
         "perks": {
           "type": "perks",
           "settings": {
-            "perk_1": "Entrega digital inmediata por correo",
-            "perk_2": "Se conecta con el resto de la familia PLURA",
+            "perk_1": "Acceso inmediato después de la compra",
+            "perk_2": "Se conecta con el resto de PLURA Suite",
             "perk_3": "[Soporte incluido: describe el alcance]"
           }
         },
@@ -53,9 +53,10 @@
     "related": {
       "type": "cta-banner",
       "settings": {
-        "heading": "Conecta más módulos",
-        "text": "<p>Cada producto PLURA comparte datos con los demás.</p>",
-        "button_label": "Ver la familia"
+        "heading": "¿Listo para ordenar tu operación?",
+        "text": "Agenda una demo y te mostramos PLURA con los casos de tu negocio.",
+        "button_label": "Solicitar demo gratis",
+        "button2_label": "Ver precios"
       }
     }
   },

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="{{ settings.color_ink }}">
+    <meta name="theme-color" content="{{ settings.light_bg }}">
     <link rel="canonical" href="{{ canonical_url }}">
 
     {%- if settings.favicon != blank -%}
@@ -26,7 +26,7 @@
 
     {% render 'meta-tags' %}
 
-    {{ 'nunito-latin-wght.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: true }}
+    {{ 'geist-latin-wght.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: true }}
     {% render 'css-variables' %}
     {{ 'base.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
@@ -45,6 +45,5 @@
 
     {% sections 'footer-group' %}
 
-    {% render 'isotipo-defs' %}
   </body>
 </html>

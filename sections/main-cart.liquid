@@ -9,13 +9,12 @@
         <div>
           <ul class="cart-items">
             {%- for item in cart.items -%}
-              {%- capture color -%}{% render 'product-color', product: item.product %}{%- endcapture -%}
               <li class="cart-item">
-                <div class="cart-item__media bg-{{ color }}">
+                <div class="cart-item__media">
                   {%- if item.image -%}
                     {{ item.image | image_url: width: 200 | image_tag: loading: 'lazy', alt: item.image.alt, width: 88, height: 88 }}
                   {%- else -%}
-                    {% render 'isotipo', variant: 'mono', width: 44 %}
+                    <div class="placeholder">{% render 'isotipo', width: 32 %}</div>
                   {%- endif -%}
                 </div>
                 <div>
@@ -54,7 +53,7 @@
           </div>
         </div>
 
-        <aside class="cart-summary" aria-label="{{ 'cart.summary' | t }}">
+        <aside class="card cart-summary" aria-label="{{ 'cart.summary' | t }}">
           {%- if section.settings.show_note -%}
             <div class="field">
               <label for="CartNote">{{ 'cart.note' | t }}</label>

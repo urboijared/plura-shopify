@@ -2,232 +2,149 @@
   "sections": {
     "hero": {
       "type": "hero",
-      "blocks": {
-        "chip_pos": {
-          "type": "chip",
-          "settings": {
-            "label": "POS",
-            "color": "blue"
-          }
-        },
-        "chip_crm": {
-          "type": "chip",
-          "settings": {
-            "label": "CRM",
-            "color": "amber"
-          }
-        },
-        "chip_finanzas": {
-          "type": "chip",
-          "settings": {
-            "label": "Finanzas",
-            "color": "green"
-          }
-        },
-        "chip_suite": {
-          "type": "chip",
-          "settings": {
-            "label": "Suite",
-            "color": "ink"
-          }
-        },
-        "chip_connect": {
-          "type": "chip",
-          "settings": {
-            "label": "Connect",
-            "color": "magenta"
-          }
-        }
-      },
-      "block_order": [
-        "chip_pos",
-        "chip_crm",
-        "chip_finanzas",
-        "chip_suite",
-        "chip_connect"
-      ],
       "settings": {
-        "scheme": "light",
-        "eyebrow": "Software para negocios",
-        "heading": "Un solo sistema para <em>todo tu negocio</em>.",
-        "text": "<p>Ventas, clientes, finanzas y comunicación conectados en una misma plataforma. Elige el módulo que necesitas y suma los demás cuando crezcas.</p>",
-        "button_label": "Ver planes",
-        "button2_label": "Conocer la familia"
+        "badge": "PLURA Suite · POS · CRM · Finanzas",
+        "heading": "Todo tu negocio,",
+        "heading_muted": "en un solo lugar.",
+        "text": "<p>Vende, gestiona clientes y controla tus finanzas desde una plataforma conectada. Menos herramientas sueltas, más tiempo para crecer.</p>",
+        "button_label": "Solicitar demo gratis",
+        "button2_label": "Ver precios",
+        "note": "Sin tarjeta de crédito · Implementación guiada",
+        "show_grid": true,
+        "show_blob": true,
+        "app_url": "app.plura",
+        "stat1_label": "Ventas de hoy",
+        "stat1_value": "$4.820",
+        "chart_bars": "30,40,36,52,44,62,80",
+        "stat2_label": "Leads nuevos",
+        "stat2_value": "+27",
+        "chart_line": "10,14,13,22,20,31,36",
+        "pipeline_label": "Pipeline",
+        "pipeline_col1": "Contacto",
+        "pipeline_col2": "Propuesta",
+        "pipeline_col3": "Cierre",
+        "stat3_label": "Flujo de caja",
+        "stat3_value": "$18.240",
+        "stat3_tag": "+12.4%"
       }
     },
-    "family": {
-      "type": "product-family",
+    "strip": {
+      "type": "feature-strip",
       "blocks": {
-        "pos": {
-          "type": "product",
-          "settings": {
-            "name": "pos",
-            "text": "[Describe PLURA POS en una línea]",
-            "color": "blue"
-          }
-        },
-        "crm": {
-          "type": "product",
-          "settings": {
-            "name": "crm",
-            "text": "[Describe PLURA CRM en una línea]",
-            "color": "amber"
-          }
-        },
-        "finanzas": {
-          "type": "product",
-          "settings": {
-            "name": "finanzas",
-            "text": "[Describe PLURA Finanzas en una línea]",
-            "color": "green"
-          }
-        },
-        "suite": {
-          "type": "product",
-          "settings": {
-            "name": "suite",
-            "text": "[Describe PLURA Suite en una línea]",
-            "color": "ink"
-          }
-        },
-        "connect": {
-          "type": "product",
-          "settings": {
-            "name": "connect",
-            "text": "[Describe PLURA Connect en una línea]",
-            "color": "magenta"
-          }
-        }
+        "s1": { "type": "item", "settings": { "title": "Un solo login", "text": "POS, CRM y Finanzas comparten datos en tiempo real." } },
+        "s2": { "type": "item", "settings": { "title": "En la nube", "text": "Accede desde cualquier dispositivo, sin instalar nada." } },
+        "s3": { "type": "item", "settings": { "title": "Soporte cercano", "text": "Acompañamiento humano en español e inglés." } }
       },
-      "block_order": [
-        "pos",
-        "crm",
-        "finanzas",
-        "suite",
-        "connect"
-      ],
+      "block_order": ["s1", "s2", "s3"],
+      "settings": { "padding_bottom": 72 }
+    },
+    "modules": {
+      "type": "modules",
+      "blocks": {
+        "pos": { "type": "module", "settings": { "icon": "pos", "tag": "PLURA", "title": "POS", "text": "Vende rápido, en tienda o en movimiento.", "items": "Facturación ágil\nInventario sincronizado\nMúltiples sucursales y cajas\nCierres de caja en un clic", "link_label": "Me interesa" } },
+        "crm": { "type": "module", "settings": { "icon": "crm", "tag": "PLURA", "title": "CRM", "text": "Convierte contactos en clientes fieles.", "items": "Pipeline visual de ventas\nHistorial 360° del cliente\nTareas y seguimientos\nCampañas y segmentación", "link_label": "Me interesa" } },
+        "finanzas": { "type": "module", "settings": { "icon": "finance", "tag": "PLURA", "title": "Finanzas", "text": "Tus números claros, siempre al día.", "items": "Ingresos y gastos\nCuentas por cobrar y pagar\nFlujo de caja proyectado\nReportes listos para tu contador", "link_label": "Me interesa" } }
+      },
+      "block_order": ["pos", "crm", "finanzas"],
       "settings": {
-        "scheme": "surface",
-        "eyebrow": "La familia PLURA",
-        "heading": "Una familia, un solo sistema.",
-        "text": "<p>Cada módulo funciona solo y se conecta con los demás. Empieza por lo que más necesitas hoy.</p>",
-        "link_label": "Ver todos los planes"
+        "anchor": "suite",
+        "eyebrow": "PLURA Suite",
+        "heading": "Tres módulos. Una sola operación.",
+        "text": "Úsalos juntos o empieza por el que más necesites. Todos hablan el mismo idioma."
       }
     },
     "features": {
-      "type": "feature-grid",
+      "type": "features",
       "blocks": {
-        "f1": {
-          "type": "feature",
-          "settings": {
-            "icon": "nodes",
-            "color": "blue",
-            "title": "Un solo sistema",
-            "text": "<p>Tus datos de ventas, clientes y finanzas viven en el mismo lugar.</p>"
-          }
-        },
-        "f2": {
-          "type": "feature",
-          "settings": {
-            "icon": "bolt",
-            "color": "amber",
-            "title": "Activación inmediata",
-            "text": "<p>Recibe tu acceso por correo apenas completes la compra.</p>"
-          }
-        },
-        "f3": {
-          "type": "feature",
-          "settings": {
-            "icon": "shield",
-            "color": "green",
-            "title": "Datos protegidos",
-            "text": "<p>[Describe aquí tu política de seguridad y respaldo.]</p>"
-          }
-        }
+        "f1": { "type": "feature", "settings": { "icon": "chart", "title": "Reportes en tiempo real", "text": "Tableros con las métricas que importan: ventas, márgenes, clientes y caja." } },
+        "f2": { "type": "feature", "settings": { "icon": "shield", "title": "Seguridad y respaldos", "text": "Cifrado, copias de seguridad automáticas y control de accesos." } },
+        "f3": { "type": "feature", "settings": { "icon": "users", "title": "Roles y permisos", "text": "Define quién ve y qué puede hacer cada persona de tu equipo." } },
+        "f4": { "type": "feature", "settings": { "icon": "branches", "title": "Multi-sucursal", "text": "Administra varias sedes, bodegas y cajas desde un mismo panel." } },
+        "f5": { "type": "feature", "settings": { "icon": "plug", "title": "Integraciones", "text": "Conecta pasarelas de pago, e-commerce y tus herramientas favoritas." } },
+        "f6": { "type": "feature", "settings": { "icon": "devices", "title": "Móvil y escritorio", "text": "Diseño responsivo para trabajar desde donde estés." } }
       },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3"
-      ],
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
       "settings": {
-        "scheme": "ground",
-        "center": true,
-        "eyebrow": "Por qué PLURA",
-        "heading": "Todo conectado desde el primer día"
+        "anchor": "funciones",
+        "eyebrow": "Funciones",
+        "heading": "Pensado para empresas que quieren crecer en orden."
       }
     },
-    "plans": {
-      "type": "featured-collection",
+    "steps": {
+      "type": "steps",
+      "blocks": {
+        "p1": { "type": "step", "settings": { "title": "Agenda una demo", "text": "Conocemos tu negocio y te mostramos PLURA con tus casos reales." } },
+        "p2": { "type": "step", "settings": { "title": "Configuramos contigo", "text": "Migramos tus datos, creamos usuarios y ajustamos la plataforma." } },
+        "p3": { "type": "step", "settings": { "title": "Empieza a crecer", "text": "Opera con todo conectado y recibe acompañamiento continuo." } }
+      },
+      "block_order": ["p1", "p2", "p3"],
       "settings": {
-        "scheme": "surface",
-        "eyebrow": "Planes",
-        "heading": "Elige tu plan",
-        "limit": 6,
-        "show_view_all": true
+        "eyebrow": "Cómo funciona",
+        "heading": "De la demo a operar en días, no meses."
+      }
+    },
+    "pricing": {
+      "type": "pricing",
+      "blocks": {
+        "inicial": { "type": "plan", "settings": { "title": "Inicial", "text": "Para negocios que están empezando a digitalizarse.", "price_monthly": "$29", "price_annual": "$25", "period": "USD/mes", "items": "1 módulo a elección\nHasta 3 usuarios\n1 sucursal\nSoporte por correo", "button_label": "Empezar", "featured": false, "badge": "Más elegido" } },
+        "crecimiento": { "type": "plan", "settings": { "title": "Crecimiento", "text": "La suite completa para equipos en expansión.", "price_monthly": "$79", "price_annual": "$67", "period": "USD/mes", "items": "POS + CRM + Finanzas\nHasta 15 usuarios\nHasta 3 sucursales\nReportes avanzados\nSoporte prioritario", "button_label": "Solicitar demo", "featured": true, "badge": "Más elegido" } },
+        "empresa": { "type": "plan", "settings": { "title": "Empresa", "text": "Para operaciones con necesidades específicas.", "price_monthly": "A medida", "period": "", "items": "Usuarios y sucursales ilimitadas\nIntegraciones a medida\nGerente de cuenta dedicado\nSLA y capacitación", "button_label": "Hablar con ventas", "featured": false, "badge": "Más elegido" } }
+      },
+      "block_order": ["inicial", "crecimiento", "empresa"],
+      "settings": {
+        "anchor": "precios",
+        "eyebrow": "Precios",
+        "heading": "Planes que crecen contigo.",
+        "text": "Precios en USD por empresa. Cambia o cancela cuando quieras.",
+        "monthly_label": "Mensual",
+        "annual_label": "Anual",
+        "annual_save": "−15%"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": { "type": "quote", "settings": { "quote": "Por fin tenemos ventas, clientes y caja en el mismo lugar. Cerramos el mes en horas, no en días.", "name": "[Nombre del cliente]", "role": "[Cargo · Empresa]" } },
+        "t2": { "type": "quote", "settings": { "quote": "El CRM nos ayudó a ordenar el seguimiento comercial. Ahora ningún lead se queda sin respuesta.", "name": "[Nombre del cliente]", "role": "[Cargo · Empresa]" } },
+        "t3": { "type": "quote", "settings": { "quote": "La implementación fue rápida y el equipo de soporte siempre responde. Se siente como un socio.", "name": "[Nombre del cliente]", "role": "[Cargo · Empresa]" } }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": {
+        "eyebrow": "Clientes",
+        "heading": "Lo que dicen quienes ya usan PLURA."
       }
     },
     "faq": {
       "type": "faq",
       "blocks": {
-        "q1": {
-          "type": "question",
-          "settings": {
-            "question": "¿Cómo recibo el software después de comprar?",
-            "answer": "<p>[Explica cómo se entrega: descarga, licencia por correo o acceso a la cuenta.]</p>"
-          }
-        },
-        "q2": {
-          "type": "question",
-          "settings": {
-            "question": "¿Puedo combinar varios módulos?",
-            "answer": "<p>[Explica cómo se conectan POS, CRM, Finanzas, Suite y Connect.]</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "¿Qué medios de pago aceptan?",
-            "answer": "<p>[Indica los medios de pago disponibles.]</p>"
-          }
-        },
-        "q4": {
-          "type": "question",
-          "settings": {
-            "question": "¿Puedo cancelar o pedir un reembolso?",
-            "answer": "<p>[Resume tu política de reembolso y enlaza la página completa.]</p>"
-          }
-        }
+        "q1": { "type": "question", "settings": { "question": "¿Puedo contratar solo un módulo?", "answer": "<p>Sí. Empieza con POS, CRM o Finanzas y suma los demás cuando los necesites.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "¿Necesito instalar algo?", "answer": "<p>No. PLURA funciona en la nube desde cualquier navegador.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "¿Cuánto tarda la implementación?", "answer": "<p>[Indica el tiempo habitual de implementación.]</p>" } },
+        "q4": { "type": "question", "settings": { "question": "¿Mis datos están seguros?", "answer": "<p>[Describe cifrado, respaldos y control de accesos.]</p>" } },
+        "q5": { "type": "question", "settings": { "question": "¿Ofrecen capacitación y soporte?", "answer": "<p>[Describe el acompañamiento incluido.]</p>" } },
+        "q6": { "type": "question", "settings": { "question": "¿Puedo cancelar cuando quiera?", "answer": "<p>[Resume tu política de cancelación.]</p>" } }
       },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4"
-      ],
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
       "settings": {
-        "scheme": "ground",
-        "eyebrow": "Preguntas",
-        "heading": "Preguntas frecuentes",
-        "open_first": true
+        "anchor": "faq",
+        "eyebrow": "Preguntas frecuentes",
+        "heading": "Resolvemos tus dudas.",
+        "open_first": false
       }
     },
-    "cta": {
-      "type": "cta-banner",
+    "contact": {
+      "type": "contact-form",
       "settings": {
-        "heading": "Empieza hoy con PLURA",
-        "text": "<p>Activa tu primer módulo en minutos y suma los demás cuando los necesites.</p>",
-        "button_label": "Ver planes",
-        "button2_label": "Hablar con ventas"
+        "anchor": "contacto",
+        "eyebrow": "Contacto",
+        "heading": "Hablemos de tu empresa.",
+        "text": "Déjanos tus datos y te contactamos en menos de 24 horas hábiles para agendar una demo personalizada.",
+        "points": "Demo de 30 minutos con tus casos reales\nPropuesta según tu tamaño y necesidades\nSin compromiso",
+        "interests": "PLURA Suite completa\nPLURA POS\nPLURA CRM\nPLURA Finanzas",
+        "consent": "Acepto que PLURA me contacte sobre sus servicios.",
+        "button_label": "Solicitar demo"
       }
     }
   },
-  "order": [
-    "hero",
-    "family",
-    "features",
-    "plans",
-    "faq",
-    "cta"
-  ]
+  "order": ["hero", "strip", "modules", "features", "steps", "pricing", "testimonials", "faq", "contact"]
 }

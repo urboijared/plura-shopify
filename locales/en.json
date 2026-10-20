@@ -1,0 +1,122 @@
+{
+  "general": {
+    "page": "Page {{ page }}",
+    "search": "Search",
+    "pagination": "Pagination",
+    "previous": "Previous page",
+    "next": "Next page",
+    "payment_methods": "Payment methods",
+    "rights": "All rights reserved."
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content"
+  },
+  "sections": {
+    "announcement": {
+      "label": "Announcement"
+    },
+    "header": {
+      "menu": "Menu"
+    },
+    "hero": {
+      "dashboard_label": "PLURA dashboard showing sales, leads, pipeline and cash flow"
+    },
+    "pricing": {
+      "billing": "Billing period"
+    },
+    "featured_collection": {
+      "view_all": "View all",
+      "placeholder_title": "Your product",
+      "placeholder_text": "Choose a collection in the theme editor to show your plans here."
+    }
+  },
+  "products": {
+    "price": {
+      "from": "From {{ price }}"
+    },
+    "quantity": "Quantity",
+    "add_to_cart": "Add to cart",
+    "sold_out": "Unavailable"
+  },
+  "collections": {
+    "label": "Collection",
+    "empty": "There are no products in this collection yet.",
+    "count": {
+      "one": "{{ count }} product",
+      "other": "{{ count }} products"
+    }
+  },
+  "cart": {
+    "title": "Cart",
+    "count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    },
+    "remove": "Remove",
+    "update": "Update cart",
+    "continue": "Browse products",
+    "summary": "Order summary",
+    "note": "Order note",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "taxes_note": "Taxes and discounts are calculated at checkout. You will receive access by email.",
+    "checkout": "Check out",
+    "empty": "Your cart is empty."
+  },
+  "customer": {
+    "account": "Account"
+  },
+  "newsletter": {
+    "label": "Email",
+    "placeholder": "you@company.com",
+    "button": "Subscribe",
+    "success": "Thanks. We'll be in touch soon."
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "What are you looking for?",
+    "results_count": {
+      "zero": "No results for “{{ terms }}”.",
+      "one": "{{ count }} result for “{{ terms }}”.",
+      "other": "{{ count }} results for “{{ terms }}”."
+    }
+  },
+  "blogs": {
+    "label": "Blog"
+  },
+  "password": {
+    "enter": "Enter using password",
+    "label": "Password",
+    "submit": "Enter",
+    "error": "Incorrect password."
+  },
+  "templates": {
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you are looking for doesn't exist or has moved.",
+      "home": "Back to home"
+    }
+  },
+  "gift_cards": {
+    "title": "Your gift card",
+    "code": "Code",
+    "balance": "Available balance",
+    "expired": "This gift card has expired.",
+    "disabled": "This gift card is disabled.",
+    "shop": "Go to store",
+    "print": "Print"
+  },
+  "contact": {
+    "name": "Name",
+    "email": "Work email",
+    "company": "Company",
+    "phone": "Phone (optional)",
+    "phone_key": "Phone",
+    "interest": "What are you interested in?",
+    "message": "Tell us briefly what you need",
+    "consent_key": "Contact consent",
+    "yes": "Yes",
+    "success": "Thanks. We'll contact you within 24 business hours.",
+    "error": "Please check the highlighted fields."
+  }
+}

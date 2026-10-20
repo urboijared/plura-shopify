@@ -8,15 +8,13 @@
       {%- for collection in collections -%}
         {%- unless collection.handle == 'frontpage' and collection.products_count == 0 -%}
           <li>
-            <article class="product-card product-card--{% cycle 'blue', 'amber', 'green', 'ink', 'magenta' %}">
+            <article class="card product-card">
               <a class="product-card__link" href="{{ collection.url }}">
                 <div class="product-card__media">
                   {%- if collection.featured_image -%}
                     {{ collection.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '360, 540, 720, 900' }}
                   {%- else -%}
-                    <div class="product-card__placeholder">
-                      {% render 'isotipo', variant: 'mono', width: 96, class: 'isotipo--white' %}
-                    </div>
+                    <div class="placeholder">{% render 'isotipo', width: 72 %}</div>
                   {%- endif -%}
                 </div>
                 <div class="product-card__body">

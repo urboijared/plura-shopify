@@ -1,38 +1,68 @@
 {% style %}
   @font-face {
-    font-family: 'Nunito';
-    src: url('{{ 'nunito-latin-wght.woff2' | asset_url }}') format('woff2-variations');
-    font-weight: 200 1000;
+    font-family: 'Geist';
+    src: url('{{ 'geist-latin-wght.woff2' | asset_url }}') format('woff2-variations');
+    font-weight: 100 900;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'IBM Plex Mono';
-    src: url('{{ 'ibm-plex-mono-500.woff2' | asset_url }}') format('woff2');
-    font-weight: 500;
+    font-family: 'Geist Mono';
+    src: url('{{ 'geist-mono-latin-wght.woff2' | asset_url }}') format('woff2-variations');
+    font-weight: 100 900;
     font-style: normal;
     font-display: swap;
   }
 
   :root {
-    --color-ink: {{ settings.color_ink }};
-    --color-ground: {{ settings.color_ground }};
-    --color-surface: {{ settings.color_surface }};
-    --color-night: {{ settings.color_night }};
-    --color-muted: {{ settings.color_muted }};
-    --color-line: {{ settings.color_line }};
-    --color-blue: {{ settings.color_blue }};
-    --color-magenta: {{ settings.color_magenta }};
-    --color-green: {{ settings.color_green }};
-    --color-amber: {{ settings.color_amber }};
-    --color-accent: var(--color-{{ settings.color_accent }});
-
-    --font-display: 'Nunito', ui-rounded, 'SF Pro Rounded', system-ui, sans-serif;
-    --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
-    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
-
+    --font-body: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', monospace;
     --page-width: {{ settings.page_width }}px;
     --radius: {{ settings.radius }}px;
     --radius-pill: 999px;
   }
+
+  {%- capture light_tokens -%}
+    color-scheme: light;
+    --color-bg: {{ settings.light_bg }};
+    --color-surface: {{ settings.light_surface }};
+    --color-ink: {{ settings.light_ink }};
+    --color-muted: {{ settings.light_muted }};
+    --color-line: {{ settings.light_line }};
+    --color-accent: {{ settings.light_accent }};
+    --color-soft: color-mix(in srgb, {{ settings.light_ink }} 4%, {{ settings.light_surface }});
+    --color-bar: color-mix(in srgb, {{ settings.light_ink }} 10%, {{ settings.light_surface }});
+    --color-grid: color-mix(in srgb, {{ settings.light_ink }} 5%, transparent);
+    --color-accent-soft: color-mix(in srgb, {{ settings.light_accent }} 10%, {{ settings.light_surface }});
+    --shadow-card: 0 30px 80px -30px rgba(10, 10, 20, 0.22), 0 2px 6px rgba(10, 10, 20, 0.04);
+  {%- endcapture -%}
+  {%- capture dark_tokens -%}
+    color-scheme: dark;
+    --color-bg: {{ settings.dark_bg }};
+    --color-surface: {{ settings.dark_surface }};
+    --color-ink: {{ settings.dark_ink }};
+    --color-muted: {{ settings.dark_muted }};
+    --color-line: {{ settings.dark_line }};
+    --color-accent: {{ settings.dark_accent }};
+    --color-soft: color-mix(in srgb, {{ settings.dark_bg }} 60%, {{ settings.dark_surface }});
+    --color-bar: color-mix(in srgb, {{ settings.dark_ink }} 12%, {{ settings.dark_surface }});
+    --color-grid: color-mix(in srgb, {{ settings.dark_ink }} 6%, transparent);
+    --color-accent-soft: color-mix(in srgb, {{ settings.dark_accent }} 14%, {{ settings.dark_surface }});
+    --shadow-card: 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+  {%- endcapture -%}
+
+  {%- case settings.color_mode -%}
+    {%- when 'dark' -%}
+      :root { {{ dark_tokens }} }
+    {%- when 'auto' -%}
+      :root { {{ light_tokens }} }
+      @media (prefers-color-scheme: dark) {
+        :root { {{ dark_tokens }} }
+      }
+    {%- else -%}
+      :root { {{ light_tokens }} }
+  {%- endcase -%}
+
+  .scheme-dark { {{ dark_tokens }} }
+  .scheme-light { {{ light_tokens }} }
 {% endstyle %}

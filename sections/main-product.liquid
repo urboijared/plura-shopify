@@ -1,8 +1,5 @@
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
-  capture color
-    render 'product-color', product: product
-  endcapture
   assign form_id = 'product-form-' | append: section.id
 -%}
 <section class="section section--tight">
@@ -38,13 +35,7 @@
           {%- endfor -%}
         </ul>
       {%- else -%}
-        <div class="product__placeholder bg-{{ color }}">
-          {%- if color == 'amber' -%}
-            {% render 'isotipo', variant: 'mono', width: 220, class: 'isotipo--ink' %}
-          {%- else -%}
-            {% render 'isotipo', variant: 'mono', width: 220, class: 'isotipo--white' %}
-          {%- endif -%}
-        </div>
+        <div class="product__placeholder"><div class="placeholder">{% render 'isotipo', width: 160 %}</div></div>
       {%- endif -%}
     </div>
 
@@ -140,11 +131,11 @@
             </div>
 
           {%- when 'perks' -%}
-            <ul class="product__perks" {{ block.shopify_attributes }}>
+            <ul class="card checklist product__perks" {{ block.shopify_attributes }}>
               {%- for i in (1..4) -%}
                 {%- assign key = 'perk_' | append: i -%}
                 {%- if block.settings[key] != blank -%}
-                  <li>{% render 'icon', name: 'check' %}<span>{{ block.settings[key] | escape }}</span></li>
+                  <li>{% render 'icon', name: 'check-plain' %}<span>{{ block.settings[key] | escape }}</span></li>
                 {%- endif -%}
               {%- endfor -%}
             </ul>
@@ -208,8 +199,8 @@
       "name": "Beneficios",
       "limit": 1,
       "settings": [
-        { "type": "text", "id": "perk_1", "label": "Beneficio 1", "default": "Entrega digital inmediata por correo" },
-        { "type": "text", "id": "perk_2", "label": "Beneficio 2", "default": "Se conecta con el resto de la familia PLURA" },
+        { "type": "text", "id": "perk_1", "label": "Beneficio 1", "default": "Acceso inmediato después de la compra" },
+        { "type": "text", "id": "perk_2", "label": "Beneficio 2", "default": "Se conecta con el resto de PLURA Suite" },
         { "type": "text", "id": "perk_3", "label": "Beneficio 3", "default": "[Soporte incluido: describe el alcance]" },
         { "type": "text", "id": "perk_4", "label": "Beneficio 4" }
       ]

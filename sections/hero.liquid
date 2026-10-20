@@ -1,45 +1,77 @@
 {%- liquid
-  assign dark = false
-  if section.settings.scheme == 'dark'
-    assign dark = true
+  assign bars = section.settings.chart_bars | split: ','
+  assign spark = section.settings.chart_line | split: ','
+  assign spark_max = 0
+  assign spark_min = 999999
+  for v in spark
+    assign n = v | strip | plus: 0
+    if n > spark_max
+      assign spark_max = n
+    endif
+    if n < spark_min
+      assign spark_min = n
+    endif
+  endfor
+  assign spark_range = spark_max | minus: spark_min
+  if spark_range == 0
+    assign spark_range = 1
+  endif
+  assign spark_steps = spark.size | minus: 1
+  if spark_steps < 1
+    assign spark_steps = 1
+  endif
+  assign bar_max = 0
+  for v in bars
+    assign n = v | strip | plus: 0
+    if n > bar_max
+      assign bar_max = n
+    endif
+  endfor
+  if bar_max == 0
+    assign bar_max = 1
   endif
 -%}
-<section class="hero{% if dark %} section--dark{% endif %}">
-  <div class="page-width hero__grid">
+<section class="hero">
+  {%- if section.settings.show_grid -%}
+    <div class="hero__grid-bg" aria-hidden="true"></div>
+  {%- endif -%}
+  <div class="page-width hero__inner">
     <div>
-      {%- if section.settings.eyebrow != blank -%}
-        <span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {%- if section.settings.badge != blank -%}
+        <span class="badge">{{ section.settings.badge | escape }}</span>
       {%- endif -%}
-      <h1 class="hero__title">{{ section.settings.heading }}</h1>
+      <h1 class="hero__title">
+        <span class="hero__title-line">{{ section.settings.heading | escape }}</span>
+        {%- if section.settings.heading_muted != blank -%}
+          <span class="hero__title-line hero__title-line--muted">{{ section.settings.heading_muted | escape }}</span>
+        {%- endif -%}
+      </h1>
       {%- if section.settings.text != blank -%}
-        <div class="lead rte">{{ section.settings.text }}</div>
+        <div class="lead lead--lg rte">{{ section.settings.text }}</div>
       {%- endif -%}
       <div class="button-row">
         {%- if section.settings.button_label != blank -%}
-          <a class="button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">
-            {{- section.settings.button_label | escape -}}
+          <a class="button button--lg" href="{{ section.settings.button_link | default: '#contacto' }}">
+            {{- section.settings.button_label | escape }}
+            <span class="button__arrow" aria-hidden="true">→</span>
           </a>
         {%- endif -%}
         {%- if section.settings.button2_label != blank -%}
-          <a class="button button--secondary" href="{{ section.settings.button2_link | default: '#familia' }}">
+          <a class="button button--lg button--secondary" href="{{ section.settings.button2_link | default: '#precios' }}">
             {{- section.settings.button2_label | escape -}}
           </a>
         {%- endif -%}
       </div>
-
-      {%- if section.blocks.size > 0 -%}
-        <ul class="hero__chips" aria-label="{{ 'sections.hero.family' | t }}">
-          {%- for block in section.blocks -%}
-            <li class="chip" {{ block.shopify_attributes }}>
-              <span class="chip__dot bg-{{ block.settings.color }}"></span>
-              {{ block.settings.label | escape }}
-            </li>
-          {%- endfor -%}
-        </ul>
+      {%- if section.settings.note != blank -%}
+        <p class="hero__note">{{ section.settings.note | escape }}</p>
       {%- endif -%}
     </div>
 
     <div class="hero__visual">
+      {%- if section.settings.show_blob -%}
+        {% render 'isotipo', width: 220, class: 'hero__blob' %}
+      {%- endif -%}
+
       {%- if section.settings.image != blank -%}
         {{
           section.settings.image
@@ -47,7 +79,77 @@
           | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 45vw, 100vw', widths: '600, 900, 1200'
         }}
       {%- else -%}
-        {% render 'isotipo', variant: 'glow', width: 460, label: shop.name %}
+        <div class="dashboard" role="img" aria-label="{{ 'sections.hero.dashboard_label' | t }}">
+          <div class="dashboard__bar" aria-hidden="true">
+            <span class="dashboard__dot"></span><span class="dashboard__dot"></span><span class="dashboard__dot"></span>
+            <span class="dashboard__url">{{ section.settings.app_url | escape }}</span>
+          </div>
+          <div class="dashboard__grid" aria-hidden="true">
+            <div class="dashboard__card">
+              <div class="dashboard__label">{{ section.settings.stat1_label | escape }}</div>
+              <div class="dashboard__value">{{ section.settings.stat1_value | escape }}</div>
+              <div class="bars">
+                {%- for v in bars -%}
+                  {%- assign h = v | strip | plus: 0 | times: 100 | divided_by: bar_max -%}
+                  <span style="height: {{ h }}%"></span>
+                {%- endfor -%}
+              </div>
+            </div>
+            <div class="dashboard__card">
+              <div class="dashboard__label">{{ section.settings.stat2_label | escape }}</div>
+              <div class="dashboard__value">{{ section.settings.stat2_value | escape }}</div>
+              <svg class="spark" viewBox="0 0 200 46" preserveAspectRatio="none">
+                <polyline
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                  vector-effect="non-scaling-stroke"
+                  points="
+                    {%- for v in spark -%}
+                      {%- assign n = v | strip | plus: 0 | minus: spark_min -%}
+                      {%- assign x = forloop.index0 | times: 200 | divided_by: spark_steps -%}
+                      {%- assign y = n | times: 38 | divided_by: spark_range | minus: 42 | abs -%}
+                      {{ x }},{{ y }}{% unless forloop.last %} {% endunless %}
+                    {%- endfor -%}
+                  "
+                />
+              </svg>
+            </div>
+            <div class="dashboard__card dashboard__card--wide">
+              <div class="dashboard__label">
+                <span>{{ section.settings.pipeline_label | escape }}</span>
+                <span class="mono">CRM</span>
+              </div>
+              <div class="pipeline">
+                <div class="pipeline__col">
+                  <span>{{ section.settings.pipeline_col1 | escape }}</span>
+                  <span class="pipeline__item"></span><span class="pipeline__item"></span><span class="pipeline__item"></span>
+                </div>
+                <div class="pipeline__col">
+                  <span>{{ section.settings.pipeline_col2 | escape }}</span>
+                  <span class="pipeline__item"></span><span class="pipeline__item"></span>
+                </div>
+                <div class="pipeline__col">
+                  <span>{{ section.settings.pipeline_col3 | escape }}</span>
+                  <span class="pipeline__item"></span>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard__card dashboard__card--wide">
+              <div class="dashboard__row">
+                <div>
+                  <div class="dashboard__label">{{ section.settings.stat3_label | escape }}</div>
+                  <div class="dashboard__value">{{ section.settings.stat3_value | escape }}</div>
+                </div>
+                {%- if section.settings.stat3_tag != blank -%}
+                  <span class="tag">{{ section.settings.stat3_tag | escape }}</span>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>
       {%- endif -%}
     </div>
   </div>
@@ -58,59 +160,34 @@
   "name": "Portada",
   "tag": "div",
   "settings": [
-    {
-      "type": "select",
-      "id": "scheme",
-      "label": "Esquema",
-      "options": [
-        { "value": "light", "label": "Claro" },
-        { "value": "dark", "label": "Oscuro" }
-      ],
-      "default": "light"
-    },
-    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Software para negocios" },
-    { "type": "inline_richtext", "id": "heading", "label": "Título", "default": "Un solo sistema para <em>todo tu negocio</em>.", "info": "Usa cursiva para resaltar con el color de acento." },
-    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Ventas, clientes, finanzas y comunicación conectados en una misma plataforma. Elige el módulo que necesitas y suma los demás cuando crezcas.</p>" },
-    { "type": "text", "id": "button_label", "label": "Botón principal", "default": "Ver planes" },
-    { "type": "url", "id": "button_link", "label": "Enlace del botón principal" },
-    { "type": "text", "id": "button2_label", "label": "Botón secundario", "default": "Conocer la familia" },
-    { "type": "url", "id": "button2_link", "label": "Enlace del botón secundario" },
-    { "type": "image_picker", "id": "image", "label": "Imagen", "info": "Si la dejas vacía se muestra el isotipo a color." }
+    { "type": "text", "id": "badge", "label": "Insignia", "default": "PLURA Suite · POS · CRM · Finanzas" },
+    { "type": "text", "id": "heading", "label": "Título (línea 1)", "default": "Todo tu negocio," },
+    { "type": "text", "id": "heading_muted", "label": "Título (línea 2, en gris)", "default": "en un solo lugar." },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Vende, gestiona clientes y controla tus finanzas desde una plataforma conectada. Menos herramientas sueltas, más tiempo para crecer.</p>" },
+    { "type": "text", "id": "button_label", "label": "Botón principal", "default": "Solicitar demo gratis" },
+    { "type": "url", "id": "button_link", "label": "Enlace del botón principal", "info": "Vacío: formulario de contacto." },
+    { "type": "text", "id": "button2_label", "label": "Botón secundario", "default": "Ver precios" },
+    { "type": "url", "id": "button2_link", "label": "Enlace del botón secundario", "info": "Vacío: sección de precios." },
+    { "type": "text", "id": "note", "label": "Nota bajo los botones", "default": "Sin tarjeta de crédito · Implementación guiada" },
+    { "type": "checkbox", "id": "show_grid", "label": "Mostrar cuadrícula de fondo", "default": true },
+    { "type": "checkbox", "id": "show_blob", "label": "Mostrar isotipo detrás del panel", "default": true },
+    { "type": "header", "content": "Panel de la app" },
+    { "type": "image_picker", "id": "image", "label": "Captura real (opcional)", "info": "Si subes una imagen reemplaza la maqueta del panel." },
+    { "type": "text", "id": "app_url", "label": "Dirección", "default": "app.plura" },
+    { "type": "text", "id": "stat1_label", "label": "Dato 1: título", "default": "Ventas de hoy" },
+    { "type": "text", "id": "stat1_value", "label": "Dato 1: valor", "default": "$4.820" },
+    { "type": "text", "id": "chart_bars", "label": "Dato 1: barras", "info": "Números separados por comas.", "default": "30,40,36,52,44,62,80" },
+    { "type": "text", "id": "stat2_label", "label": "Dato 2: título", "default": "Leads nuevos" },
+    { "type": "text", "id": "stat2_value", "label": "Dato 2: valor", "default": "+27" },
+    { "type": "text", "id": "chart_line", "label": "Dato 2: línea", "info": "Números separados por comas.", "default": "10,14,13,22,20,31,36" },
+    { "type": "text", "id": "pipeline_label", "label": "Pipeline: título", "default": "Pipeline" },
+    { "type": "text", "id": "pipeline_col1", "label": "Pipeline: columna 1", "default": "Contacto" },
+    { "type": "text", "id": "pipeline_col2", "label": "Pipeline: columna 2", "default": "Propuesta" },
+    { "type": "text", "id": "pipeline_col3", "label": "Pipeline: columna 3", "default": "Cierre" },
+    { "type": "text", "id": "stat3_label", "label": "Dato 3: título", "default": "Flujo de caja" },
+    { "type": "text", "id": "stat3_value", "label": "Dato 3: valor", "default": "$18.240" },
+    { "type": "text", "id": "stat3_tag", "label": "Dato 3: variación", "default": "+12.4%" }
   ],
-  "blocks": [
-    {
-      "type": "chip",
-      "name": "Etiqueta",
-      "limit": 6,
-      "settings": [
-        { "type": "text", "id": "label", "label": "Texto", "default": "POS" },
-        {
-          "type": "select",
-          "id": "color",
-          "label": "Color",
-          "options": [
-            { "value": "blue", "label": "Azul" },
-            { "value": "amber", "label": "Ámbar" },
-            { "value": "green", "label": "Verde" },
-            { "value": "ink", "label": "Tinta" },
-            { "value": "magenta", "label": "Magenta" }
-          ],
-          "default": "blue"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Portada",
-      "blocks": [
-        { "type": "chip", "settings": { "label": "POS", "color": "blue" } },
-        { "type": "chip", "settings": { "label": "CRM", "color": "amber" } },
-        { "type": "chip", "settings": { "label": "Finanzas", "color": "green" } },
-        { "type": "chip", "settings": { "label": "Suite", "color": "ink" } },
-        { "type": "chip", "settings": { "label": "Connect", "color": "magenta" } }
-      ]
-    }
-  ]
+  "presets": [{ "name": "Portada" }]
 }
 {% endschema %}

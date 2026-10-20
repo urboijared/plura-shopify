@@ -1,0 +1,16 @@
+{%- comment -%}
+  Logo enlazado al inicio: imagen de la configuración o isotipo + "plura.".
+{%- endcomment -%}
+<a class="brand" href="{{ routes.root_url }}">
+  {%- if settings.logo != blank -%}
+    {{
+      settings.logo
+      | image_url: width: 480
+      | image_tag: width: settings.logo_width, height: null, alt: shop.name, loading: 'eager', style: 'height: auto'
+    }}
+  {%- else -%}
+    {% render 'isotipo', width: 30 %}
+    <span class="wordmark" aria-hidden="true">plura.</span>
+    <span class="visually-hidden">{{ shop.name }}</span>
+  {%- endif -%}
+</a>

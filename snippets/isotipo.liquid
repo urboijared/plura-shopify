@@ -1,14 +1,12 @@
 {%- comment -%}
-  Isotipo PLURA (nodos).
+  Isotipo PLURA (nodos), en un solo color (currentColor).
   Parámetros:
-  - variant: 'color' (por defecto), 'mono' (usa currentColor) o 'glow' (color con halo)
-  - width: ancho en px (por defecto 48)
+  - width: ancho en px (por defecto 32)
   - label: texto accesible; si está vacío el SVG es decorativo
   - class: clase CSS adicional
 {%- endcomment -%}
 {%- liquid
-  assign variant = variant | default: 'color'
-  assign width = width | default: 48
+  assign width = width | default: 32
   assign height = width | times: 240 | divided_by: 282
 -%}
 <svg
@@ -16,35 +14,14 @@
   viewBox="38 82 282 240"
   width="{{ width }}"
   height="{{ height }}"
-  overflow="visible"
+  fill="currentColor"
   {% if label != blank %}role="img" aria-label="{{ label | escape }}"{% else %}aria-hidden="true" focusable="false"{% endif %}
 >
-  {%- if variant == 'mono' -%}
-    <g fill="currentColor">
-      <circle cx="110" cy="250" r="60"/>
-      <circle cx="145" cy="140" r="46"/>
-      <circle cx="240" cy="255" r="52"/>
-      <circle cx="285" cy="185" r="26"/>
-      <path d="M162.52 220.98 A34 34 0 0 1 172.18 177.11 L101.37 154.58 A34 34 0 0 1 83.91 195.97 Z"/>
-      <path d="M153.5 291.33 A34 34 0 0 1 202.6 291.13 L205.48 216.11 A34 34 0 0 1 156.54 212.13 Z"/>
-      <path d="M290.04 240.87 A34 34 0 0 1 301.36 205.2 L259.83 178.5 A34 34 0 0 1 232.08 203.61 Z"/>
-    </g>
-  {%- else -%}
-    {%- if variant == 'glow' -%}
-      <g opacity="0.5" filter="url(#plura-glow)">
-        <circle cx="110" cy="250" r="60" fill="var(--color-blue)"/>
-        <circle cx="145" cy="140" r="46" fill="var(--color-magenta)"/>
-        <circle cx="240" cy="255" r="52" fill="var(--color-green)"/>
-        <circle cx="285" cy="185" r="26" fill="var(--color-amber)"/>
-      </g>
-    {%- endif -%}
-    <g mask="url(#plura-mask)">
-      <g filter="url(#plura-blur)">
-        <circle cx="110" cy="250" r="100" fill="var(--color-blue)"/>
-        <circle cx="145" cy="140" r="86" fill="var(--color-magenta)"/>
-        <circle cx="240" cy="255" r="92" fill="var(--color-green)"/>
-        <circle cx="285" cy="185" r="66" fill="var(--color-amber)"/>
-      </g>
-    </g>
-  {%- endif -%}
+  <circle cx="110" cy="250" r="60"/>
+  <circle cx="145" cy="140" r="46"/>
+  <circle cx="240" cy="255" r="52"/>
+  <circle cx="285" cy="185" r="26"/>
+  <path d="M162.52 220.98 A34 34 0 0 1 172.18 177.11 L101.37 154.58 A34 34 0 0 1 83.91 195.97 Z"/>
+  <path d="M153.5 291.33 A34 34 0 0 1 202.6 291.13 L205.48 216.11 A34 34 0 0 1 156.54 212.13 Z"/>
+  <path d="M290.04 240.87 A34 34 0 0 1 301.36 205.2 L259.83 178.5 A34 34 0 0 1 232.08 203.61 Z"/>
 </svg>

@@ -2,20 +2,23 @@
   "current": "Default",
   "presets": {
     "Default": {
-      "color_ink": "#1C2030",
-      "color_ground": "#F4F4F2",
-      "color_surface": "#FFFFFF",
-      "color_night": "#0C0E14",
-      "color_muted": "#4F5465",
-      "color_line": "#E1E4EA",
-      "color_blue": "#2B54D9",
-      "color_amber": "#E39B22",
-      "color_green": "#136F4A",
-      "color_magenta": "#C8235A",
-      "color_accent": "blue",
-      "page_width": 1240,
-      "radius": 20,
-      "logo_width": 120
+      "color_mode": "light",
+      "light_bg": "#FAFAFA",
+      "light_surface": "#FFFFFF",
+      "light_ink": "#0A0A0A",
+      "light_muted": "#5C5C66",
+      "light_line": "#E7E7EB",
+      "light_accent": "#5B4BF5",
+      "dark_bg": "#0A0A0B",
+      "dark_surface": "#131315",
+      "dark_ink": "#F4F4F5",
+      "dark_muted": "#A1A1AA",
+      "dark_line": "#26262B",
+      "dark_accent": "#8B7DF8",
+      "page_width": 1160,
+      "radius": 16,
+      "logo_width": 96,
+      "contact_email": "hola@plura.example"
     }
   }
 }

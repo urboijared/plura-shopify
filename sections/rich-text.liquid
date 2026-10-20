@@ -1,4 +1,4 @@
-<section class="section{% if section.settings.scheme == 'surface' %} section--surface{% elsif section.settings.scheme == 'dark' %} section--dark{% endif %}">
+<section class="section">
   <div class="page-width">
     <div class="section-header section-header--center" style="margin-bottom: 0">
       {%- if section.settings.eyebrow != blank -%}
@@ -24,17 +24,6 @@
   "name": "Texto enriquecido",
   "tag": "div",
   "settings": [
-    {
-      "type": "select",
-      "id": "scheme",
-      "label": "Esquema",
-      "options": [
-        { "value": "ground", "label": "Fondo" },
-        { "value": "surface", "label": "Superficie" },
-        { "value": "dark", "label": "Oscuro" }
-      ],
-      "default": "ground"
-    },
     { "type": "text", "id": "eyebrow", "label": "Antetítulo" },
     { "type": "text", "id": "heading", "label": "Título", "default": "Hablemos de tu negocio" },
     { "type": "richtext", "id": "text", "label": "Texto" },

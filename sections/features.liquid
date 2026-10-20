@@ -1,0 +1,80 @@
+<section id="{{ section.settings.anchor | default: 'funciones' | handle }}" class="section">
+  <div class="page-width">
+    <div class="section-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+      <h2>{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.text != blank -%}
+        <p class="lead">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="features">
+      {%- for block in section.blocks -%}
+        <div class="feature" {{ block.shopify_attributes }}>
+          <span class="feature__icon">{% render 'icon', name: block.settings.icon %}</span>
+          <h3>{{ block.settings.title | escape }}</h3>
+          {%- if block.settings.text != blank -%}
+            <p>{{ block.settings.text | escape }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Funciones",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancla del menú", "default": "funciones" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Funciones" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Pensado para empresas que quieren crecer en orden." },
+    { "type": "text", "id": "text", "label": "Texto" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Función",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icono",
+          "options": [
+            { "value": "chart", "label": "Gráfico" },
+            { "value": "shield", "label": "Escudo" },
+            { "value": "users", "label": "Usuarios" },
+            { "value": "branches", "label": "Sucursales" },
+            { "value": "plug", "label": "Integraciones" },
+            { "value": "devices", "label": "Dispositivos" },
+            { "value": "bolt", "label": "Rayo" },
+            { "value": "cloud", "label": "Nube" },
+            { "value": "support", "label": "Soporte" },
+            { "value": "nodes", "label": "Nodos" }
+          ],
+          "default": "chart"
+        },
+        { "type": "text", "id": "title", "label": "Título", "default": "Función" },
+        { "type": "text", "id": "text", "label": "Texto" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Funciones",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "chart", "title": "Reportes en tiempo real", "text": "Tableros con las métricas que importan: ventas, márgenes, clientes y caja." } },
+        { "type": "feature", "settings": { "icon": "shield", "title": "Seguridad y respaldos", "text": "Cifrado, copias de seguridad automáticas y control de accesos." } },
+        { "type": "feature", "settings": { "icon": "users", "title": "Roles y permisos", "text": "Define quién ve y qué puede hacer cada persona de tu equipo." } },
+        { "type": "feature", "settings": { "icon": "branches", "title": "Multi-sucursal", "text": "Administra varias sedes, bodegas y cajas desde un mismo panel." } },
+        { "type": "feature", "settings": { "icon": "plug", "title": "Integraciones", "text": "Conecta pasarelas de pago, e-commerce y tus herramientas favoritas." } },
+        { "type": "feature", "settings": { "icon": "devices", "title": "Móvil y escritorio", "text": "Diseño responsivo para trabajar desde donde estés." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

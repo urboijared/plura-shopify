@@ -5,33 +5,25 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "menu_products": {
+        "producto": {
           "type": "menu",
-          "settings": {
-            "heading": "Explorar",
-            "menu": "main-menu"
-          }
+          "settings": { "heading": "Producto", "menu": "footer-producto" }
         },
-        "menu_legal": {
+        "empresa": {
           "type": "menu",
-          "settings": {
-            "heading": "Ayuda",
-            "menu": "footer"
-          }
+          "settings": { "heading": "Empresa", "menu": "footer-empresa" }
+        },
+        "legal": {
+          "type": "menu",
+          "settings": { "heading": "Legal", "menu": "footer" }
         }
       },
-      "block_order": [
-        "menu_products",
-        "menu_legal"
-      ],
+      "block_order": ["producto", "empresa", "legal"],
       "settings": {
-        "tagline": "Un solo sistema para todo tu negocio.",
-        "show_newsletter": true,
-        "show_payment_icons": false
+        "tagline": "Software que facilita el crecimiento de tu empresa.",
+        "show_newsletter": false
       }
     }
   },
-  "order": [
-    "footer"
-  ]
+  "order": ["footer"]
 }

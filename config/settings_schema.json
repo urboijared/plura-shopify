@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "PLURA",
-    "theme_version": "1.0.0",
+    "theme_version": "2.0.0",
     "theme_author": "PLURA",
     "theme_documentation_url": "https://github.com/urboijared/plura-shopify",
     "theme_support_url": "https://github.com/urboijared/plura-shopify"
@@ -10,37 +10,38 @@
   {
     "name": "Colores",
     "settings": [
-      { "type": "header", "content": "Base" },
-      { "type": "color", "id": "color_ink", "label": "Tinta (texto principal)", "default": "#1C2030" },
-      { "type": "color", "id": "color_ground", "label": "Fondo", "default": "#F4F4F2" },
-      { "type": "color", "id": "color_surface", "label": "Superficie (tarjetas)", "default": "#FFFFFF" },
-      { "type": "color", "id": "color_night", "label": "Fondo oscuro", "default": "#0C0E14" },
-      { "type": "color", "id": "color_muted", "label": "Texto secundario", "default": "#4F5465" },
-      { "type": "color", "id": "color_line", "label": "Bordes", "default": "#E1E4EA" },
-      { "type": "header", "content": "Familia de productos" },
-      { "type": "color", "id": "color_blue", "label": "Azul (POS)", "default": "#2B54D9" },
-      { "type": "color", "id": "color_amber", "label": "Ámbar (CRM)", "default": "#E39B22" },
-      { "type": "color", "id": "color_green", "label": "Verde (Finanzas)", "default": "#136F4A" },
-      { "type": "color", "id": "color_magenta", "label": "Magenta (Connect)", "default": "#C8235A" },
       {
         "type": "select",
-        "id": "color_accent",
-        "label": "Color de botones y enlaces",
+        "id": "color_mode",
+        "label": "Modo de color",
         "options": [
-          { "value": "blue", "label": "Azul" },
-          { "value": "magenta", "label": "Magenta" },
-          { "value": "green", "label": "Verde" },
-          { "value": "ink", "label": "Tinta" }
+          { "value": "light", "label": "Claro" },
+          { "value": "dark", "label": "Oscuro" },
+          { "value": "auto", "label": "Automático (según el sistema del visitante)" }
         ],
-        "default": "blue"
-      }
+        "default": "light"
+      },
+      { "type": "header", "content": "Modo claro" },
+      { "type": "color", "id": "light_bg", "label": "Fondo", "default": "#FAFAFA" },
+      { "type": "color", "id": "light_surface", "label": "Tarjetas", "default": "#FFFFFF" },
+      { "type": "color", "id": "light_ink", "label": "Texto", "default": "#0A0A0A" },
+      { "type": "color", "id": "light_muted", "label": "Texto secundario", "default": "#5C5C66" },
+      { "type": "color", "id": "light_line", "label": "Bordes", "default": "#E7E7EB" },
+      { "type": "color", "id": "light_accent", "label": "Acento", "default": "#5B4BF5" },
+      { "type": "header", "content": "Modo oscuro" },
+      { "type": "color", "id": "dark_bg", "label": "Fondo", "default": "#0A0A0B" },
+      { "type": "color", "id": "dark_surface", "label": "Tarjetas", "default": "#131315" },
+      { "type": "color", "id": "dark_ink", "label": "Texto", "default": "#F4F4F5" },
+      { "type": "color", "id": "dark_muted", "label": "Texto secundario", "default": "#A1A1AA" },
+      { "type": "color", "id": "dark_line", "label": "Bordes", "default": "#26262B" },
+      { "type": "color", "id": "dark_accent", "label": "Acento", "default": "#8B7DF8" }
     ]
   },
   {
     "name": "Diseño",
     "settings": [
-      { "type": "range", "id": "page_width", "label": "Ancho máximo de página", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1240 },
-      { "type": "range", "id": "radius", "label": "Radio de esquinas", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 20 }
+      { "type": "range", "id": "page_width", "label": "Ancho máximo de página", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1160 },
+      { "type": "range", "id": "radius", "label": "Radio de tarjetas", "min": 0, "max": 28, "step": 2, "unit": "px", "default": 16 }
     ]
   },
   {
@@ -50,16 +51,17 @@
         "type": "image_picker",
         "id": "logo",
         "label": "Logo (opcional)",
-        "info": "Si lo dejas vacío se usa el isotipo de nodos y el texto plura."
+        "info": "Si lo dejas vacío se usa el isotipo y el texto plura."
       },
-      { "type": "range", "id": "logo_width", "label": "Ancho del logo", "min": 60, "max": 240, "step": 4, "unit": "px", "default": 120 },
+      { "type": "range", "id": "logo_width", "label": "Ancho del logo", "min": 60, "max": 240, "step": 4, "unit": "px", "default": 96 },
       { "type": "image_picker", "id": "favicon", "label": "Favicon", "info": "Si lo dejas vacío se usa el isotipo." }
     ]
   },
   {
-    "name": "Redes sociales",
+    "name": "Contacto y redes",
     "settings": [
-      { "type": "text", "id": "social_instagram", "label": "Instagram", "placeholder": "https://instagram.com/plura" },
+      { "type": "text", "id": "contact_email", "label": "Correo de contacto", "default": "hola@plura.example" },
+      { "type": "text", "id": "social_instagram", "label": "Instagram" },
       { "type": "text", "id": "social_linkedin", "label": "LinkedIn" },
       { "type": "text", "id": "social_x", "label": "X" },
       { "type": "text", "id": "social_youtube", "label": "YouTube" }

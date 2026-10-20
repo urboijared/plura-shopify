@@ -1,0 +1,45 @@
+<section class="section--flush" style="padding-bottom: {{ section.settings.padding_bottom }}px">
+  <div class="page-width">
+    <div class="strip" style="--strip-cols: {{ section.blocks.size | at_least: 1 }}">
+      {%- for block in section.blocks -%}
+        <div class="strip__item" {{ block.shopify_attributes }}>
+          <h3>{{ block.settings.title | escape }}</h3>
+          {%- if block.settings.text != blank -%}
+            <p>{{ block.settings.text | escape }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Franja de ventajas",
+  "tag": "div",
+  "settings": [
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior", "min": 0, "max": 120, "step": 8, "unit": "px", "default": 72 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Ventaja",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "Ventaja" },
+        { "type": "text", "id": "text", "label": "Texto" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Franja de ventajas",
+      "blocks": [
+        { "type": "item", "settings": { "title": "Un solo login", "text": "POS, CRM y Finanzas comparten datos en tiempo real." } },
+        { "type": "item", "settings": { "title": "En la nube", "text": "Accede desde cualquier dispositivo, sin instalar nada." } },
+        { "type": "item", "settings": { "title": "Soporte cercano", "text": "Acompañamiento humano en español e inglés." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

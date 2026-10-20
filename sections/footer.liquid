@@ -1,18 +1,18 @@
+{%- assign email = section.settings.email | default: settings.contact_email -%}
 <footer class="site-footer">
   <div class="page-width">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        <a class="site-footer__logo" href="{{ routes.root_url }}">
-          {% render 'isotipo', width: 40 %}
-          {% render 'wordmark' %}
-          <span class="visually-hidden">{{ shop.name }}</span>
-        </a>
+        {% render 'brand' %}
         {%- if section.settings.tagline != blank -%}
           <p>{{ section.settings.tagline | escape }}</p>
         {%- endif -%}
+        {%- if email != blank -%}
+          <a class="contact__email" href="mailto:{{ email }}">{{ email }}</a>
+        {%- endif -%}
 
         {%- if section.settings.show_newsletter -%}
-          {%- form 'customer', id: 'FooterNewsletter' -%}
+          {%- form 'customer', id: 'FooterNewsletter', style: 'width: 100%' -%}
             <input type="hidden" name="contact[tags]" value="newsletter">
             {%- if form.posted_successfully? -%}
               <p class="form-message form-message--success" role="status">{{ 'newsletter.success' | t }}</p>
@@ -21,14 +21,7 @@
             {%- endif -%}
             <div class="newsletter">
               <label class="visually-hidden" for="FooterNewsletterEmail">{{ 'newsletter.label' | t }}</label>
-              <input
-                id="FooterNewsletterEmail"
-                type="email"
-                name="contact[email]"
-                autocomplete="email"
-                required
-                placeholder="{{ 'newsletter.placeholder' | t }}"
-              >
+              <input id="FooterNewsletterEmail" type="email" name="contact[email]" autocomplete="email" required placeholder="{{ 'newsletter.placeholder' | t }}">
               <button type="submit" class="button">{{ 'newsletter.button' | t }}</button>
             </div>
           {%- endform -%}
@@ -50,7 +43,7 @@
     </div>
 
     <div class="site-footer__bottom">
-      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ 'general.rights' | t }}</span>
 
       {%- liquid
         assign has_social = false
@@ -61,26 +54,20 @@
       {%- if has_social -%}
         <ul class="social-list">
           {%- if settings.social_instagram != blank -%}
-            <li><a href="{{ settings.social_instagram }}" target="_blank" rel="noopener">{% render 'icon', name: 'instagram' %}<span class="visually-hidden">Instagram</span></a></li>
+            <li><a class="icon-button" href="{{ settings.social_instagram }}" target="_blank" rel="noopener">{% render 'icon', name: 'instagram' %}<span class="visually-hidden">Instagram</span></a></li>
           {%- endif -%}
           {%- if settings.social_linkedin != blank -%}
-            <li><a href="{{ settings.social_linkedin }}" target="_blank" rel="noopener">{% render 'icon', name: 'linkedin' %}<span class="visually-hidden">LinkedIn</span></a></li>
+            <li><a class="icon-button" href="{{ settings.social_linkedin }}" target="_blank" rel="noopener">{% render 'icon', name: 'linkedin' %}<span class="visually-hidden">LinkedIn</span></a></li>
           {%- endif -%}
           {%- if settings.social_x != blank -%}
-            <li><a href="{{ settings.social_x }}" target="_blank" rel="noopener">{% render 'icon', name: 'x' %}<span class="visually-hidden">X</span></a></li>
+            <li><a class="icon-button" href="{{ settings.social_x }}" target="_blank" rel="noopener">{% render 'icon', name: 'x' %}<span class="visually-hidden">X</span></a></li>
           {%- endif -%}
           {%- if settings.social_youtube != blank -%}
-            <li><a href="{{ settings.social_youtube }}" target="_blank" rel="noopener">{% render 'icon', name: 'youtube' %}<span class="visually-hidden">YouTube</span></a></li>
+            <li><a class="icon-button" href="{{ settings.social_youtube }}" target="_blank" rel="noopener">{% render 'icon', name: 'youtube' %}<span class="visually-hidden">YouTube</span></a></li>
           {%- endif -%}
         </ul>
-      {%- endif -%}
-
-      {%- if section.settings.show_payment_icons -%}
-        <ul class="social-list" aria-label="{{ 'general.payment_methods' | t }}">
-          {%- for type in shop.enabled_payment_types -%}
-            <li>{{ type | payment_type_svg_tag: class: 'payment-icon' }}</li>
-          {%- endfor -%}
-        </ul>
+      {%- else -%}
+        <span class="wordmark" aria-hidden="true">plura.</span>
       {%- endif -%}
     </div>
   </div>
@@ -91,9 +78,9 @@
   "name": "Pie de página",
   "class": "section-footer",
   "settings": [
-    { "type": "text", "id": "tagline", "label": "Frase", "default": "Un solo sistema para todo tu negocio." },
-    { "type": "checkbox", "id": "show_newsletter", "label": "Mostrar suscripción", "default": true },
-    { "type": "checkbox", "id": "show_payment_icons", "label": "Mostrar medios de pago", "default": false }
+    { "type": "text", "id": "tagline", "label": "Frase", "default": "Software que facilita el crecimiento de tu empresa." },
+    { "type": "text", "id": "email", "label": "Correo", "info": "Vacío: el correo de la configuración del tema." },
+    { "type": "checkbox", "id": "show_newsletter", "label": "Mostrar suscripción", "default": false }
   ],
   "blocks": [
     {
@@ -101,7 +88,7 @@
       "name": "Columna de enlaces",
       "limit": 4,
       "settings": [
-        { "type": "text", "id": "heading", "label": "Título", "default": "Productos" },
+        { "type": "text", "id": "heading", "label": "Título", "default": "Producto" },
         { "type": "link_list", "id": "menu", "label": "Menú", "default": "footer" }
       ]
     }

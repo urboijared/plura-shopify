@@ -5,7 +5,8 @@
     "pagination": "Paginación",
     "previous": "Página anterior",
     "next": "Página siguiente",
-    "payment_methods": "Medios de pago"
+    "payment_methods": "Medios de pago",
+    "rights": "Todos los derechos reservados."
   },
   "accessibility": {
     "skip_to_content": "Ir al contenido"
@@ -18,12 +19,15 @@
       "menu": "Menú"
     },
     "hero": {
-      "family": "Productos PLURA"
+      "dashboard_label": "Vista del panel de PLURA con ventas, leads, pipeline y flujo de caja"
     },
     "featured_collection": {
       "view_all": "Ver todos",
       "placeholder_title": "Tu producto",
       "placeholder_text": "Elige una colección en el editor de temas para mostrar tus planes aquí."
+    },
+    "pricing": {
+      "billing": "Periodo de facturación"
     }
   },
   "products": {
@@ -101,5 +105,18 @@
     "disabled": "Esta tarjeta de regalo está desactivada.",
     "shop": "Ir a la tienda",
     "print": "Imprimir"
+  },
+  "contact": {
+    "name": "Nombre",
+    "email": "Correo de trabajo",
+    "company": "Empresa",
+    "phone": "Teléfono (opcional)",
+    "phone_key": "Teléfono",
+    "interest": "¿Qué te interesa?",
+    "message": "Cuéntanos brevemente qué necesitas",
+    "consent_key": "Acepta contacto",
+    "yes": "Sí",
+    "success": "Gracias. Te contactaremos en menos de 24 horas hábiles.",
+    "error": "Revisa los campos marcados."
   }
 }
