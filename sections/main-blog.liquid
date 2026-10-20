@@ -1,0 +1,37 @@
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="section-header">
+      <span class="eyebrow">{{ 'blogs.label' | t }}</span>
+      <h1>{{ blog.title | escape }}</h1>
+    </div>
+
+    {%- paginate blog.articles by 9 -%}
+      <div class="article-grid">
+        {%- for article in blog.articles -%}
+          <article class="article-card">
+            <a href="{{ article.url }}">
+              {%- if article.image -%}
+                <div class="article-card__media">
+                  {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '360, 540, 720, 900' }}
+                </div>
+              {%- endif -%}
+              <div class="article-card__body">
+                <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | time_tag: format: 'date' }}</time>
+                <h2 style="font-size: 1.375rem; margin-top: 8px">{{ article.title | escape }}</h2>
+                <p class="product-card__excerpt">{{ article.excerpt_or_content | strip_html | truncatewords: 24 }}</p>
+              </div>
+            </a>
+          </article>
+        {%- endfor -%}
+      </div>
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog",
+  "tag": "div"
+}
+{% endschema %}

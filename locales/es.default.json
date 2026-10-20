@@ -1,0 +1,105 @@
+{
+  "general": {
+    "page": "Página {{ page }}",
+    "search": "Buscar",
+    "pagination": "Paginación",
+    "previous": "Página anterior",
+    "next": "Página siguiente",
+    "payment_methods": "Medios de pago"
+  },
+  "accessibility": {
+    "skip_to_content": "Ir al contenido"
+  },
+  "sections": {
+    "announcement": {
+      "label": "Anuncio"
+    },
+    "header": {
+      "menu": "Menú"
+    },
+    "hero": {
+      "family": "Productos PLURA"
+    },
+    "featured_collection": {
+      "view_all": "Ver todos",
+      "placeholder_title": "Tu producto",
+      "placeholder_text": "Elige una colección en el editor de temas para mostrar tus planes aquí."
+    }
+  },
+  "products": {
+    "price": {
+      "from": "Desde {{ price }}"
+    },
+    "quantity": "Cantidad",
+    "add_to_cart": "Agregar al carrito",
+    "sold_out": "No disponible"
+  },
+  "collections": {
+    "label": "Colección",
+    "empty": "Todavía no hay productos en esta colección.",
+    "count": {
+      "one": "{{ count }} producto",
+      "other": "{{ count }} productos"
+    }
+  },
+  "cart": {
+    "title": "Carrito",
+    "count": {
+      "one": "{{ count }} artículo",
+      "other": "{{ count }} artículos"
+    },
+    "remove": "Quitar",
+    "update": "Actualizar carrito",
+    "continue": "Ver productos",
+    "summary": "Resumen del pedido",
+    "note": "Nota del pedido",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "taxes_note": "Impuestos y descuentos se calculan al pagar. Recibirás tu acceso por correo.",
+    "checkout": "Ir a pagar",
+    "empty": "Tu carrito está vacío."
+  },
+  "customer": {
+    "account": "Cuenta"
+  },
+  "newsletter": {
+    "label": "Correo electrónico",
+    "placeholder": "tu@correo.com",
+    "button": "Suscribirme",
+    "success": "Gracias. Te escribiremos pronto."
+  },
+  "search": {
+    "title": "Buscar",
+    "placeholder": "¿Qué estás buscando?",
+    "results_count": {
+      "zero": "No encontramos resultados para “{{ terms }}”.",
+      "one": "{{ count }} resultado para “{{ terms }}”.",
+      "other": "{{ count }} resultados para “{{ terms }}”."
+    }
+  },
+  "blogs": {
+    "label": "Blog"
+  },
+  "password": {
+    "enter": "Entrar con contraseña",
+    "label": "Contraseña",
+    "submit": "Entrar",
+    "error": "Contraseña incorrecta."
+  },
+  "templates": {
+    "404": {
+      "title": "Página no encontrada",
+      "subtext": "La página que buscas no existe o cambió de dirección.",
+      "home": "Volver al inicio"
+    }
+  },
+  "gift_cards": {
+    "title": "Tu tarjeta de regalo",
+    "code": "Código",
+    "balance": "Saldo disponible",
+    "expired": "Esta tarjeta de regalo expiró.",
+    "disabled": "Esta tarjeta de regalo está desactivada.",
+    "shop": "Ir a la tienda",
+    "print": "Imprimir"
+  }
+}

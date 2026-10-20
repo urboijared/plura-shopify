@@ -1,0 +1,43 @@
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="section-header">
+      <h1>{{ section.settings.heading | escape }}</h1>
+    </div>
+
+    <ul class="product-grid">
+      {%- for collection in collections -%}
+        {%- unless collection.handle == 'frontpage' and collection.products_count == 0 -%}
+          <li>
+            <article class="product-card product-card--{% cycle 'blue', 'amber', 'green', 'ink', 'magenta' %}">
+              <a class="product-card__link" href="{{ collection.url }}">
+                <div class="product-card__media">
+                  {%- if collection.featured_image -%}
+                    {{ collection.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '360, 540, 720, 900' }}
+                  {%- else -%}
+                    <div class="product-card__placeholder">
+                      {% render 'isotipo', variant: 'mono', width: 96, class: 'isotipo--white' %}
+                    </div>
+                  {%- endif -%}
+                </div>
+                <div class="product-card__body">
+                  <h2 class="product-card__title h3" style="font-size: 1.375rem">{{ collection.title | escape }}</h2>
+                  <p class="product-card__excerpt">{{ 'collections.count' | t: count: collection.products_count }}</p>
+                </div>
+              </a>
+            </article>
+          </li>
+        {%- endunless -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lista de colecciones",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Colecciones" }
+  ]
+}
+{% endschema %}

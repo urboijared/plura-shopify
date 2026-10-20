@@ -1,0 +1,51 @@
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="section-header">
+      <h1>{{ 'search.title' | t }}</h1>
+    </div>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+      <div class="field" style="flex: 1; margin: 0">
+        <label class="visually-hidden" for="SearchInput">{{ 'general.search' | t }}</label>
+        <input id="SearchInput" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'search.placeholder' | t }}">
+      </div>
+      <input type="hidden" name="options[prefix]" value="last">
+      <button type="submit" class="button">{{ 'general.search' | t }}</button>
+    </form>
+
+    {%- if search.performed -%}
+      {%- paginate search.results by 12 -%}
+        <p class="lead" role="status">{{ 'search.results_count' | t: count: search.results_count, terms: search.terms }}</p>
+        {%- if search.results_count > 0 -%}
+          <ul class="product-grid" style="margin-top: 32px">
+            {%- for item in search.results -%}
+              <li>
+                {%- if item.object_type == 'product' -%}
+                  {% render 'product-card', product: item %}
+                {%- else -%}
+                  <article class="article-card" style="height: 100%">
+                    <a href="{{ item.url }}">
+                      <div class="article-card__body">
+                        <span class="eyebrow">{{ item.object_type }}</span>
+                        <h2 class="h3" style="font-size: 1.375rem">{{ item.title | escape }}</h2>
+                        <p class="product-card__excerpt">{{ item.content | strip_html | truncatewords: 24 }}</p>
+                      </div>
+                    </a>
+                  </article>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {% render 'pagination', paginate: paginate %}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Búsqueda",
+  "tag": "div"
+}
+{% endschema %}

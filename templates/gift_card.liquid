@@ -1,0 +1,38 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ 'gift_cards.title' | t }} &ndash; {{ shop.name }}</title>
+    <link rel="icon" type="image/svg+xml" href="{{ 'favicon.svg' | asset_url }}">
+    {% render 'css-variables' %}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+  </head>
+  <body>
+    <main class="password" style="background: var(--color-ground); color: var(--color-ink)">
+      {% render 'isotipo', width: 120 %}
+      <h1>{{ 'gift_cards.title' | t }}</h1>
+      {%- if gift_card.expired -%}
+        <p class="form-message form-message--error">{{ 'gift_cards.expired' | t }}</p>
+      {%- elsif gift_card.enabled == false -%}
+        <p class="form-message form-message--error">{{ 'gift_cards.disabled' | t }}</p>
+      {%- endif -%}
+      <p class="eyebrow">{{ 'gift_cards.balance' | t }}</p>
+      <p class="price" style="font-size: 2.5rem">{{ gift_card.balance | money }}</p>
+      <p class="eyebrow">{{ 'gift_cards.code' | t }}</p>
+      <p class="price" style="font-size: 1.5rem">{{ gift_card.code | format_code }}</p>
+      {%- if gift_card.pass_url -%}
+        <a href="{{ gift_card.pass_url }}">
+          <img src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="Apple Wallet" loading="lazy">
+        </a>
+      {%- endif -%}
+      <div class="button-row" style="justify-content: center">
+        <a class="button" href="{{ shop.url }}">{{ 'gift_cards.shop' | t }}</a>
+        <button type="button" class="button button--secondary" onclick="window.print()">{{ 'gift_cards.print' | t }}</button>
+      </div>
+    </main>
+    {% render 'isotipo-defs' %}
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<header class="site-header" data-site-header>
+  <div class="page-width site-header__inner">
+    <a class="site-header__logo" href="{{ routes.root_url }}">
+      {%- if settings.logo != blank -%}
+        {{
+          settings.logo
+          | image_url: width: 480
+          | image_tag: width: settings.logo_width, height: null, alt: shop.name, loading: 'eager', style: 'height: auto'
+        }}
+      {%- else -%}
+        {% render 'isotipo', width: 40 %}
+        {% render 'wordmark' %}
+        <span class="visually-hidden">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="site-header__nav" aria-label="{{ 'sections.header.menu' | t }}">
+      <ul>
+        {%- for link in section.settings.menu.links -%}
+          <li>
+            <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="icon-button" href="{{ routes.search_url }}">
+        {% render 'icon', name: 'search' %}
+        <span class="visually-hidden">{{ 'general.search' | t }}</span>
+      </a>
+
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="icon-button" href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}">
+          {% render 'icon', name: 'account' %}
+          <span class="visually-hidden">{{ 'customer.account' | t }}</span>
+        </a>
+      {%- endif -%}
+
+      <a class="icon-button" href="{{ routes.cart_url }}">
+        {% render 'icon', name: 'cart' %}
+        <span class="visually-hidden">{{ 'cart.title' | t }}</span>
+        {%- if cart.item_count > 0 -%}
+          <span class="cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+          <span class="visually-hidden">{{ 'cart.count' | t: count: cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+
+      {%- if section.settings.cta_label != blank -%}
+        <a class="button site-header__cta" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">
+          {{- section.settings.cta_label | escape -}}
+        </a>
+      {%- endif -%}
+
+      <details class="mobile-menu" data-mobile-menu>
+        <summary class="icon-button">
+          <span class="mobile-menu__icon-open">{% render 'icon', name: 'menu' %}</span>
+          <span class="mobile-menu__icon-close">{% render 'icon', name: 'close' %}</span>
+          <span class="visually-hidden">{{ 'sections.header.menu' | t }}</span>
+        </summary>
+        <div class="mobile-menu__panel">
+          <nav aria-label="{{ 'sections.header.menu' | t }}">
+            <ul>
+              {%- for link in section.settings.menu.links -%}
+                <li>
+                  <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </nav>
+          {%- if section.settings.cta_label != blank -%}
+            <a class="button button--full" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">
+              {{- section.settings.cta_label | escape -}}
+            </a>
+          {%- endif -%}
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Encabezado",
+  "class": "section-header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menú", "default": "main-menu" },
+    { "type": "text", "id": "cta_label", "label": "Texto del botón", "default": "Ver planes" },
+    { "type": "url", "id": "cta_link", "label": "Enlace del botón" }
+  ],
+  "enabled_on": { "groups": ["header"] }
+}
+{% endschema %}

@@ -1,0 +1,23 @@
+{
+  "type": "header",
+  "name": "Grupo de encabezado",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "Nuevo: PLURA Connect ya está disponible"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "cta_label": "Ver planes"
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "header"
+  ]
+}

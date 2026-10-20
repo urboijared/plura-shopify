@@ -1,0 +1,37 @@
+{
+  "type": "footer",
+  "name": "Grupo de pie de página",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu_products": {
+          "type": "menu",
+          "settings": {
+            "heading": "Explorar",
+            "menu": "main-menu"
+          }
+        },
+        "menu_legal": {
+          "type": "menu",
+          "settings": {
+            "heading": "Ayuda",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "menu_products",
+        "menu_legal"
+      ],
+      "settings": {
+        "tagline": "Un solo sistema para todo tu negocio.",
+        "show_newsletter": true,
+        "show_payment_icons": false
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

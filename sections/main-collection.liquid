@@ -1,0 +1,38 @@
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="section-header">
+      <span class="eyebrow">{{ 'collections.label' | t }}</span>
+      <h1>{{ collection.title | escape }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="lead rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- paginate collection.products by section.settings.per_page -%}
+      {%- if collection.products.size > 0 -%}
+        <ul class="product-grid">
+          {%- for product in collection.products -%}
+            <li>{% render 'product-card', product: product %}</li>
+          {%- endfor -%}
+        </ul>
+      {%- else -%}
+        <div class="empty-state">
+          {% render 'isotipo', width: 120 %}
+          <p class="lead">{{ 'collections.empty' | t }}</p>
+        </div>
+      {%- endif -%}
+
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Colección",
+  "tag": "div",
+  "settings": [
+    { "type": "range", "id": "per_page", "label": "Productos por página", "min": 6, "max": 48, "step": 3, "default": 12 }
+  ]
+}
+{% endschema %}

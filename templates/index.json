@@ -1,0 +1,233 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "chip_pos": {
+          "type": "chip",
+          "settings": {
+            "label": "POS",
+            "color": "blue"
+          }
+        },
+        "chip_crm": {
+          "type": "chip",
+          "settings": {
+            "label": "CRM",
+            "color": "amber"
+          }
+        },
+        "chip_finanzas": {
+          "type": "chip",
+          "settings": {
+            "label": "Finanzas",
+            "color": "green"
+          }
+        },
+        "chip_suite": {
+          "type": "chip",
+          "settings": {
+            "label": "Suite",
+            "color": "ink"
+          }
+        },
+        "chip_connect": {
+          "type": "chip",
+          "settings": {
+            "label": "Connect",
+            "color": "magenta"
+          }
+        }
+      },
+      "block_order": [
+        "chip_pos",
+        "chip_crm",
+        "chip_finanzas",
+        "chip_suite",
+        "chip_connect"
+      ],
+      "settings": {
+        "scheme": "light",
+        "eyebrow": "Software para negocios",
+        "heading": "Un solo sistema para <em>todo tu negocio</em>.",
+        "text": "<p>Ventas, clientes, finanzas y comunicación conectados en una misma plataforma. Elige el módulo que necesitas y suma los demás cuando crezcas.</p>",
+        "button_label": "Ver planes",
+        "button2_label": "Conocer la familia"
+      }
+    },
+    "family": {
+      "type": "product-family",
+      "blocks": {
+        "pos": {
+          "type": "product",
+          "settings": {
+            "name": "pos",
+            "text": "[Describe PLURA POS en una línea]",
+            "color": "blue"
+          }
+        },
+        "crm": {
+          "type": "product",
+          "settings": {
+            "name": "crm",
+            "text": "[Describe PLURA CRM en una línea]",
+            "color": "amber"
+          }
+        },
+        "finanzas": {
+          "type": "product",
+          "settings": {
+            "name": "finanzas",
+            "text": "[Describe PLURA Finanzas en una línea]",
+            "color": "green"
+          }
+        },
+        "suite": {
+          "type": "product",
+          "settings": {
+            "name": "suite",
+            "text": "[Describe PLURA Suite en una línea]",
+            "color": "ink"
+          }
+        },
+        "connect": {
+          "type": "product",
+          "settings": {
+            "name": "connect",
+            "text": "[Describe PLURA Connect en una línea]",
+            "color": "magenta"
+          }
+        }
+      },
+      "block_order": [
+        "pos",
+        "crm",
+        "finanzas",
+        "suite",
+        "connect"
+      ],
+      "settings": {
+        "scheme": "surface",
+        "eyebrow": "La familia PLURA",
+        "heading": "Una familia, un solo sistema.",
+        "text": "<p>Cada módulo funciona solo y se conecta con los demás. Empieza por lo que más necesitas hoy.</p>",
+        "link_label": "Ver todos los planes"
+      }
+    },
+    "features": {
+      "type": "feature-grid",
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "nodes",
+            "color": "blue",
+            "title": "Un solo sistema",
+            "text": "<p>Tus datos de ventas, clientes y finanzas viven en el mismo lugar.</p>"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "bolt",
+            "color": "amber",
+            "title": "Activación inmediata",
+            "text": "<p>Recibe tu acceso por correo apenas completes la compra.</p>"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "shield",
+            "color": "green",
+            "title": "Datos protegidos",
+            "text": "<p>[Describe aquí tu política de seguridad y respaldo.]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "scheme": "ground",
+        "center": true,
+        "eyebrow": "Por qué PLURA",
+        "heading": "Todo conectado desde el primer día"
+      }
+    },
+    "plans": {
+      "type": "featured-collection",
+      "settings": {
+        "scheme": "surface",
+        "eyebrow": "Planes",
+        "heading": "Elige tu plan",
+        "limit": 6,
+        "show_view_all": true
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "¿Cómo recibo el software después de comprar?",
+            "answer": "<p>[Explica cómo se entrega: descarga, licencia por correo o acceso a la cuenta.]</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "¿Puedo combinar varios módulos?",
+            "answer": "<p>[Explica cómo se conectan POS, CRM, Finanzas, Suite y Connect.]</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "¿Qué medios de pago aceptan?",
+            "answer": "<p>[Indica los medios de pago disponibles.]</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "¿Puedo cancelar o pedir un reembolso?",
+            "answer": "<p>[Resume tu política de reembolso y enlaza la página completa.]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "settings": {
+        "scheme": "ground",
+        "eyebrow": "Preguntas",
+        "heading": "Preguntas frecuentes",
+        "open_first": true
+      }
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "heading": "Empieza hoy con PLURA",
+        "text": "<p>Activa tu primer módulo en minutos y suma los demás cuando los necesites.</p>",
+        "button_label": "Ver planes",
+        "button2_label": "Hablar con ventas"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "family",
+    "features",
+    "plans",
+    "faq",
+    "cta"
+  ]
+}

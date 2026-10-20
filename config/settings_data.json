@@ -1,0 +1,21 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "color_ink": "#1C2030",
+      "color_ground": "#F4F4F2",
+      "color_surface": "#FFFFFF",
+      "color_night": "#0C0E14",
+      "color_muted": "#4F5465",
+      "color_line": "#E1E4EA",
+      "color_blue": "#2B54D9",
+      "color_amber": "#E39B22",
+      "color_green": "#136F4A",
+      "color_magenta": "#C8235A",
+      "color_accent": "blue",
+      "page_width": 1240,
+      "radius": 20,
+      "logo_width": 120
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{%- liquid
+  assign dark = false
+  if section.settings.scheme == 'dark'
+    assign dark = true
+  endif
+-%}
+<section class="hero{% if dark %} section--dark{% endif %}">
+  <div class="page-width hero__grid">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+      <h1 class="hero__title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}
+        <div class="lead rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+      <div class="button-row">
+        {%- if section.settings.button_label != blank -%}
+          <a class="button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">
+            {{- section.settings.button_label | escape -}}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button2_label != blank -%}
+          <a class="button button--secondary" href="{{ section.settings.button2_link | default: '#familia' }}">
+            {{- section.settings.button2_label | escape -}}
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="hero__chips" aria-label="{{ 'sections.hero.family' | t }}">
+          {%- for block in section.blocks -%}
+            <li class="chip" {{ block.shopify_attributes }}>
+              <span class="chip__dot bg-{{ block.settings.color }}"></span>
+              {{ block.settings.label | escape }}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    <div class="hero__visual">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 45vw, 100vw', widths: '600, 900, 1200'
+        }}
+      {%- else -%}
+        {% render 'isotipo', variant: 'glow', width: 460, label: shop.name %}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Portada",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "select",
+      "id": "scheme",
+      "label": "Esquema",
+      "options": [
+        { "value": "light", "label": "Claro" },
+        { "value": "dark", "label": "Oscuro" }
+      ],
+      "default": "light"
+    },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Software para negocios" },
+    { "type": "inline_richtext", "id": "heading", "label": "Título", "default": "Un solo sistema para <em>todo tu negocio</em>.", "info": "Usa cursiva para resaltar con el color de acento." },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Ventas, clientes, finanzas y comunicación conectados en una misma plataforma. Elige el módulo que necesitas y suma los demás cuando crezcas.</p>" },
+    { "type": "text", "id": "button_label", "label": "Botón principal", "default": "Ver planes" },
+    { "type": "url", "id": "button_link", "label": "Enlace del botón principal" },
+    { "type": "text", "id": "button2_label", "label": "Botón secundario", "default": "Conocer la familia" },
+    { "type": "url", "id": "button2_link", "label": "Enlace del botón secundario" },
+    { "type": "image_picker", "id": "image", "label": "Imagen", "info": "Si la dejas vacía se muestra el isotipo a color." }
+  ],
+  "blocks": [
+    {
+      "type": "chip",
+      "name": "Etiqueta",
+      "limit": 6,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Texto", "default": "POS" },
+        {
+          "type": "select",
+          "id": "color",
+          "label": "Color",
+          "options": [
+            { "value": "blue", "label": "Azul" },
+            { "value": "amber", "label": "Ámbar" },
+            { "value": "green", "label": "Verde" },
+            { "value": "ink", "label": "Tinta" },
+            { "value": "magenta", "label": "Magenta" }
+          ],
+          "default": "blue"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portada",
+      "blocks": [
+        { "type": "chip", "settings": { "label": "POS", "color": "blue" } },
+        { "type": "chip", "settings": { "label": "CRM", "color": "amber" } },
+        { "type": "chip", "settings": { "label": "Finanzas", "color": "green" } },
+        { "type": "chip", "settings": { "label": "Suite", "color": "ink" } },
+        { "type": "chip", "settings": { "label": "Connect", "color": "magenta" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
