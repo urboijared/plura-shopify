@@ -25,7 +25,7 @@
         "show_blob": true,
         "app_url": "app.plura",
         "stat1_label": "Ventas de hoy",
-        "stat1_value": "$4.820",
+        "stat1_value": "$4.820.000",
         "chart_bars": "30,40,36,52,44,62,80",
         "stat2_label": "Leads nuevos",
         "stat2_value": "+27",
@@ -35,7 +35,7 @@
         "pipeline_col2": "Propuesta",
         "pipeline_col3": "Cierre",
         "stat3_label": "Flujo de caja",
-        "stat3_value": "$18.240",
+        "stat3_value": "$88.240",
         "stat3_tag": "+12.4%"
       }
     },
